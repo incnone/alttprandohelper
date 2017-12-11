@@ -27,8 +27,9 @@
     function cane() { return items.somaria || items.byrna; }
     function rod() { return items.firerod || items.icerod; }
 
-	function agahnim() { return items.agahnim ? 'available' :
-		items.sword >= 2 || (items.cape && items.sword) ? 'agapossible' : 'unavailable';
+	function agahnim() { 
+		return items.agahnim ? 'available' :
+			items.sword >= 2 || (items.cape && items.sword) ? 'agapossible' : 'unavailable';
 	}
     function always() { return 'available'; }
 
@@ -430,7 +431,7 @@
         is_opened: false,
         is_available: function() {
             for (var k = 0; k < 10; k++) {
-                if (prizes[k] === 1 && items['boss'+k])
+                if (prizes[k] === 3 && items['boss'+k])
                     return 'available';
             }
             return 'unavailable';
@@ -713,7 +714,7 @@
             //crystal check
             var crystal_count = 0;
             for (var k = 0; k < 10; k++) {
-                if (prizes[k] === 4 && items['boss'+k])
+                if (prizes[k] === 2 && items['boss'+k])
                     crystal_count += 1;
             }
 
@@ -734,7 +735,7 @@
         is_available: function() {
             var pendant_count = 0;
             for (var k = 0; k < 10; k++) {
-                if ((prizes[k] === 1 || prizes[k] === 2) && items['boss'+k]) {
+                if ((prizes[k] === 3 || prizes[k] === 4) && items['boss'+k]) {
                     if (++pendant_count === 3) return 'available';
                 }
             }
